@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #0a0e12;
+  --bg-panel: #12181f;
+  --bg-input: #0c1118;
+  --border-subtle: rgba(232, 228, 220, 0.08);
+  --border-strong: rgba(45, 159, 108, 0.35);
+  --text: #e8e4dc;
+  --text-muted: #9ca3a8;
+  --accent: #2d9f6c;
+  --accent-dim: rgba(45, 159, 108, 0.15);
+  --clay: #c4754a;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 100% 70% at 50% -15%, rgba(45, 159, 108, 0.12), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 100% 100%, rgba(196, 117, 74, 0.06), transparent 45%),
+    linear-gradient(180deg, #0a0e12 0%, #0d1218 50%, #0a0e12 100%);
+  background-attachment: fixed;
+}
+
+/* Faint “infield” stripe texture — reads as depth, not decoration */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: 0.35;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.012) 3px,
+    rgba(255, 255, 255, 0.012) 6px
+  );
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 20%, transparent 70%);
+}
+
+@layer utilities {
+  .text-chalk {
+    color: var(--text);
+  }
+  .border-ballpark {
+    border-color: var(--border-subtle);
+  }
+  .ring-accent {
+    box-shadow: 0 0 0 1px var(--border-strong);
+  }
+}
+
+/* Scrollbar (WebKit) */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(45, 159, 108, 0.25);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 159, 108, 0.4);
+}
+
+/* Composer: keep field dark (avoid “bright panel” + kill default blue focus ring) */
+textarea.composer-field {
+  background-color: var(--bg-input);
+  color: var(--text);
+  caret-color: var(--accent);
+}
+
+textarea.composer-field:focus {
+  outline: none;
+}
+
+textarea.composer-field:-webkit-autofill,
+textarea.composer-field:-webkit-autofill:hover,
+textarea.composer-field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  transition: background-color 99999s ease-out;
+  box-shadow: 0 0 0 1000px var(--bg-input) inset;
+}
