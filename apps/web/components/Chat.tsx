@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { AssistantMarkdown } from "./AssistantMarkdown";
 import { MessageTable, type TablePayload } from "./MessageTable";
+import { PulsingBaseball } from "./PulsingBaseball";
 
 const SUGGESTED_QUESTION_PLACEHOLDER =
   'Try: "Who had the highest average fastball spin in 2024 among qualified pitchers?" — or ask about strikeouts, spin variance, and more.';
@@ -360,10 +361,7 @@ export function Chat() {
                   </div>
                   <div className="mt-2 rounded-r-lg border-l-2 border-ballpark-accent/50 bg-ballpark-accent-muted/20 py-3 pl-3 pr-3 text-ballpark-chalk/90">
                     <div className="flex gap-3">
-                      <span className="relative mt-1.5 flex h-2 w-2 shrink-0">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ballpark-accent/50 opacity-60" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-ballpark-accent" />
-                      </span>
+                      <PulsingBaseball className="mt-0.5" />
                       <div className="min-w-0 flex-1 space-y-1.5">
                         <p className="text-[13px] font-semibold tracking-tight text-ballpark-chalk/95">
                           {safeForReactChild(progress?.title, "Thinking")}

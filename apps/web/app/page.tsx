@@ -18,7 +18,7 @@ export default function Home() {
             </h1>
             <p className="mt-1 max-w-xl text-xs leading-relaxed text-ballpark-chalk/65">
               Your dugout for numbers — ask in plain English, get Savant-backed tables and clear
-              assumptions. Run the local data service for live pulls.
+              assumptions.
             </p>
           </div>
           <div className="hidden rounded-md border border-white/5 bg-ballpark-navy/50 px-2.5 py-1.5 text-[10px] text-ballpark-chalk/50 sm:block">
